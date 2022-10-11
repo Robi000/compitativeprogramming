@@ -1,0 +1,13 @@
+for i in range(len(arr)):
+        print(arr[i])
+        min = arr[i]
+        index = i
+        for k in range(i + 1, len(arr)):
+            print(f"--> {arr[k]}")
+            if arr[k] < min:
+                min = arr[k]
+                index = k
+        print(f" here is the min {min}")
+        arr[i], arr[index] = arr[index], arr[i]
+
+    print(arr)
