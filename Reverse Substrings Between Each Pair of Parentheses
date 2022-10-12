@@ -1,0 +1,32 @@
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        string = []
+        stringx = ""
+        for x in s:
+            if x not in ["(", ")"]:
+                stringx += x
+                # print(stringx)
+            if x == "(":
+                if stringx:
+                    # print(stringx)
+                    string.append(stringx)
+                stringx = ""
+                string.append("(")
+            if x == ")":
+                string.append(stringx)
+                stringx = ""
+                current = False
+                final = ""
+                while not current:
+                    current = True
+                    y = string.pop()
+                    if y != "(":
+                        current = False
+                        final = final + y[::-1]
+                print("--->", final)
+                string.append(final)
+        if stringx:
+            string.append(stringx)
+
+        return "".join(string) if string else None 
+
