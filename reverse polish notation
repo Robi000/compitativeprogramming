@@ -1,0 +1,24 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        pro = []
+        for x in tokens:
+            if x not in ["+", "-", "/", "*"]:
+                pro.append(int(x))
+            else:
+                if x == "+":
+                    j , k = pro.pop(), pro.pop()
+                    pro.append(j + k)
+                if x == "-":
+                    j , k = pro.pop(), pro.pop()
+                    pro.append(k - j)
+                if x == "*":
+                    j , k = pro.pop(), pro.pop()
+                    pro.append(j * k)
+                if x == "/":
+                    j , k = pro.pop(), pro.pop()
+                    pro.append(int(k / j))
+            # print(pro)
+                    
+        return pro[0] if pro else None
+                    
+        
