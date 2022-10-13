@@ -1,0 +1,17 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        ans = 0
+        prifix = 0
+        d = {0: 1}
+        for x in nums:
+            prifix = x + prifix
+            if prifix - k in d:
+                ans = ans + d[prifix - k]
+            if prifix in d:
+                d[prifix] = d[prifix]+1
+            else:
+                d[prifix] = 1
+
+        return (ans)
+
+
