@@ -1,0 +1,31 @@
+class Solution(object):
+    def totalFruit(self, fruits):
+        """
+        :type fruits: List[int]
+        :rtype: int
+        """
+        d = {}
+        check = [fruits[0]]
+        if len(fruits) == 1:
+            return 1
+        i, j = 0, 1
+        maxx = 0
+        while j < len(fruits):
+            # print(fruits[j] not in check, len(check) > 1, check)
+            if fruits[j] not in check and len(check) > 1:
+                # print("if here ", fruits[j-1])
+                i = d[fruits[j-1]]
+                check.pop(0) if fruits[j-1] == check[1] else check.pop(1)
+                check.append(fruits[j])
+            # print(d.get(fruits[j], 0) != d.get(
+            #     fruits[j-1], None) or fruits[j] not in check)
+            if d.get(fruits[j], 0) != d.get(fruits[j-1], None) or fruits[j] not in check:
+                # print("add here")
+                d[fruits[j]] = j
+            if fruits[j] not in check:
+                check.append(fruits[j])
+            # print(i, j, d)
+            j += 1
+            maxx = max(maxx, j-i)
+
+        return (maxx)
