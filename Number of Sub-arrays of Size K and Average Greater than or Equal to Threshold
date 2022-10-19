@@ -1,0 +1,23 @@
+class Solution(object):
+    def numOfSubarrays(self, arr, k, threshold):
+        """
+        :type arr: List[int]
+        :type k: int
+        :type threshold: int
+        :rtype: int
+        """
+        i, j = 0, k-1
+        maxx = 0
+        currentv = 0
+        for c in range(k-1):
+            currentv += arr[c]
+        # print(currentv)
+        while i < len(arr) - k + 1:
+            currentv = currentv + arr[j]
+            if currentv/k >= threshold:
+                maxx += 1
+            currentv -= arr[i]
+            i += 1
+            j += 1
+
+        return (maxx)
