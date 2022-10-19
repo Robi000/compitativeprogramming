@@ -1,0 +1,16 @@
+class Solution(object):
+    def numIdenticalPairs(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        dict = {}
+        maxx = 0
+        for x in nums:
+            dict[x] = dict.get(x , 0) + 1
+        
+        for y in dict:
+            if dict[y] >= 2:
+                maxx += dict[y]*(dict[y] -1) /2
+            
+        return maxx
