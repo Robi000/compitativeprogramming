@@ -1,0 +1,15 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+arr = {}
+x = input()
+for y in range(int(x)):
+    j = input()
+    if  j in arr:
+        arr[j] += 1
+    else:
+        arr[j]= 1
+ 
+        
+print(len(arr))
+for x in arr:
+    print(arr[x], end=" ")
+    
